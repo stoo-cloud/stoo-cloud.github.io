@@ -1,8 +1,8 @@
 <rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
     <channel>
-        <title>All Posts - first blog ☁️  stoo.cloud</title>
+        <title>All Posts - stoo.cloud ☁️  firstblog</title>
         <link>https://stoo-cloud.github.io/posts/</link>
-        <description>All Posts | first blog ☁️  stoo.cloud</description>
+        <description>All Posts | stoo.cloud ☁️  firstblog</description>
         <generator>Hugo -- gohugo.io</generator><language>en-us</language><lastBuildDate>Tue, 14 Dec 2021 16:48:10 &#43;1100</lastBuildDate><atom:link href="https://stoo-cloud.github.io/posts/" rel="self" type="application/rss+xml" /><item>
     <title>Second Post</title>
     <link>https://stoo-cloud.github.io/second_post/</link>
