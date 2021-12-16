@@ -1,6 +1,6 @@
 <rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
     <channel>
-        <title>firstblog ☁️  stoo.cloud </title>
+        <title>firstblog ☁️  stoo.cloud</title>
         <link>https://stoo-cloud.github.io/</link>
         <description>A site with my musings of working in the Cloud</description>
         <generator>Hugo -- gohugo.io</generator><language>en-us</language><lastBuildDate>Tue, 14 Dec 2021 16:48:10 &#43;1100</lastBuildDate>
