@@ -1,0 +1,16 @@
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+    <channel>
+        <title>macos - Tag - firstblog ☁️  stoo.cloud</title>
+        <link>https://stoo-cloud.github.io/tags/macos/</link>
+        <description>macos - Tag - firstblog ☁️  stoo.cloud</description>
+        <generator>Hugo -- gohugo.io</generator><language>en-us</language><managingEditor>firstblog@stoo.cloud (Stoo)</managingEditor>
+            <webMaster>firstblog@stoo.cloud (Stoo)</webMaster><lastBuildDate>Tue, 14 Dec 2021 15:56:18 &#43;1100</lastBuildDate><atom:link href="https://stoo-cloud.github.io/tags/macos/" rel="self" type="application/rss+xml" /><item>
+    <title>Python on M1 native Macbook Pro 2021</title>
+    <link>https://stoo-cloud.github.io/python-on-m1-native-macbook-pro/</link>
+    <pubDate>Tue, 14 Dec 2021 15:56:18 &#43;1100</pubDate>
+    <author>Author</author>
+    <guid>https://stoo-cloud.github.io/python-on-m1-native-macbook-pro/</guid>
+    <description><![CDATA[What have we got After upgrading to the new Macbook Pro with the M1 Pro processor at the end of 2021, it was time to install a newer version of Python.
+$ /echo $PATH /usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin $ which python /usr/bin/python $ python --version Python 2.7.18 While MacOS includes a version of Python I wanted a newer version and to keep it seperate from what Apple was using the other version for, and perhaps to have multiple environments for development.]]></description>
+</item></channel>
+</rss>

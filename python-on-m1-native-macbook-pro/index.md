@@ -26,7 +26,7 @@ $ git --version
 git version 2.32.0 (Apple Git-132)
 ```
 
-I have decided to use Homebrew as the package manager for tools not included by Apple, and there will be many of these tools that can be easily installed when required.  Homebrew has support for the Apple Silicon CPU and hence the best optoin for my M1 Pro processor.
+I have decided to use Homebrew as the package manager for tools not included by Apple, and there will be many of these tools that can be easily installed when required.  Homebrew has native support for the Apple Silicon CPU and hence the best option for my M1 Pro processor, plus it seems as easy as any other package manager I have used in the past.
 
 ## Homebrew
 ### Installing Homebrew
@@ -106,12 +106,12 @@ $ ln -s python3-config python-config
 $ ln -s pip3 pip
 ```
 
-Dont forget to re-hash again 
+Don't forget to re-hash in the zsh shell again. 
 ```Shell
 $ hash -r
 ```
 
-So now we have the everything
+So now we have the everything ready, a final check.
 
 ```Shell
 % which python3
