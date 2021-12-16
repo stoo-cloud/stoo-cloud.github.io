@@ -3,7 +3,7 @@
 
 ## What have we got
 
-After upgrading to the new Macbook Pro with the M1 Pro processor at the end of 2021, it was time to install a newer version of Python.
+After upgrading to the new Macbook Pro with the M1 Pro processor at the end of 2021, it became time to start using Python on it and do some work locally in a famililar environment.
 
 ```Shell
 $ /echo $PATH

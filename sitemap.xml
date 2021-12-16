@@ -2,12 +2,11 @@
     xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
     xmlns:xhtml="http://www.w3.org/1999/xhtml"
     ><url>
-            <loc>https://stoo-cloud.github.io/</loc><lastmod>2021-12-14T16:48:10&#43;11:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
-            <loc>https://stoo-cloud.github.io/posts/</loc><lastmod>2021-12-14T16:48:10&#43;11:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
-            <loc>https://stoo-cloud.github.io/second_post/</loc><lastmod>2021-12-14T16:48:10&#43;11:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
+            <loc>https://stoo-cloud.github.io/</loc><lastmod>2021-12-14T15:56:18&#43;11:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
             <loc>https://stoo-cloud.github.io/tags/homebrew/</loc><lastmod>2021-12-14T15:56:18&#43;11:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
             <loc>https://stoo-cloud.github.io/tags/m1/</loc><lastmod>2021-12-14T15:56:18&#43;11:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
             <loc>https://stoo-cloud.github.io/tags/macos/</loc><lastmod>2021-12-14T15:56:18&#43;11:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
+            <loc>https://stoo-cloud.github.io/posts/</loc><lastmod>2021-12-14T15:56:18&#43;11:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
             <loc>https://stoo-cloud.github.io/tags/python/</loc><lastmod>2021-12-14T15:56:18&#43;11:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
             <loc>https://stoo-cloud.github.io/python-on-m1-native-macbook-pro/</loc><lastmod>2021-12-14T15:56:18&#43;11:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
             <loc>https://stoo-cloud.github.io/tags/</loc><lastmod>2021-12-14T15:56:18&#43;11:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
