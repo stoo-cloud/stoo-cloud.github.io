@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="en-us">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="robots" content="noodp" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1">
+        <title>Ssh to Internet From Macos - firstblog ☁️  stoo.cloud</title><meta name="Description" content="A site with my musings of working in the Cloud"><meta property="og:title" content="Ssh to Internet From Macos" />
+<meta property="og:description" content="Unable to SSH to the Internet Every now and again I run into the problem of not being able to SSH out to a host on the Internet from MacOS. It has happened in 10.15 Catalina and 11.x Big Sur and now in 12.x Monterey versons of MacOS. It might be my gateway router doing something tricky, or the SSH software installed on the Mac by default, and in the case of the destination tried below, it could be GCP firewall." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://stoo-cloud.github.io/ssh-to-internet-from-macos/" /><meta property="og:image" content="https://stoo-cloud.github.io/logo.png"/><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2022-01-03T15:29:23+11:00" />
+<meta property="article:modified_time" content="2022-01-03T15:29:23+11:00" />
+
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:image" content="https://stoo-cloud.github.io/logo.png"/>
+
+<meta name="twitter:title" content="Ssh to Internet From Macos"/>
+<meta name="twitter:description" content="Unable to SSH to the Internet Every now and again I run into the problem of not being able to SSH out to a host on the Internet from MacOS. It has happened in 10.15 Catalina and 11.x Big Sur and now in 12.x Monterey versons of MacOS. It might be my gateway router doing something tricky, or the SSH software installed on the Mac by default, and in the case of the destination tried below, it could be GCP firewall."/>
+<meta name="application-name" content="stoo.cloud">
+<meta name="apple-mobile-web-app-title" content="stoo.cloud"><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
+        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="https://stoo-cloud.github.io/ssh-to-internet-from-macos/" /><link rel="prev" href="https://stoo-cloud.github.io/python-on-m1-native-macbook-pro/" /><link rel="stylesheet" href="/lib/normalize/normalize.min.css"><link rel="stylesheet" href="/css/style.min.css"><link rel="stylesheet" href="/lib/fontawesome-free/all.min.css"><link rel="stylesheet" href="/lib/animate/animate.min.css"><script type="application/ld+json">
+    {
+        "@context": "http://schema.org",
+        "@type": "BlogPosting",
+        "headline": "Ssh to Internet From Macos",
+        "inLanguage": "en-us",
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "https:\/\/stoo-cloud.github.io\/ssh-to-internet-from-macos\/"
+        },"genre": "posts","keywords": "ssh, nc, macos","wordcount":  1010 ,
+        "url": "https:\/\/stoo-cloud.github.io\/ssh-to-internet-from-macos\/","datePublished": "2022-01-03T15:29:23+11:00","dateModified": "2022-01-03T15:29:23+11:00","publisher": {
+            "@type": "Organization",
+            "name": ""},"author": {
+                "@type": "Person",
+                "name": "Stoo"
+            },"description": ""
+    }
+    </script></head>
+    <body header-desktop="fixed" header-mobile="auto"><script type="text/javascript">(window.localStorage && localStorage.getItem('theme') ? localStorage.getItem('theme') === 'dark' : ('auto' === 'auto' ? window.matchMedia('(prefers-color-scheme: dark)').matches : 'auto' === 'dark')) && document.body.setAttribute('theme', 'dark');</script>
+
+        <div id="mask"></div><div class="wrapper"><header class="desktop" id="header-desktop">
+    <div class="header-wrapper">
+        <div class="header-title">
+            <a href="/" title="firstblog ☁️  stoo.cloud">firstblog ☁️  stoo.cloud </a>
+        </div>
+        <div class="menu">
+            <div class="menu-inner"><a class="menu-item" href="/posts/"> Posts </a><a class="menu-item" href="/tags/"> Tags </a><a class="menu-item" href="/categories/"> Categories </a><a class="menu-item" href="/about"> About </a><span class="menu-item delimiter"></span><span class="menu-item search" id="search-desktop">
+                        <input type="text" placeholder="Search titles or contents..." id="search-input-desktop">
+                        <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-desktop" title="Search">
+                            <i class="fas fa-search fa-fw"></i>
+                        </a>
+                        <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-desktop" title="Clear">
+                            <i class="fas fa-times-circle fa-fw"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-desktop">
+                            <i class="fas fa-spinner fa-fw fa-spin"></i>
+                        </span>
+                    </span><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                    <i class="fas fa-adjust fa-fw"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+</header><header class="mobile" id="header-mobile">
+    <div class="header-container">
+        <div class="header-wrapper">
+            <div class="header-title">
+                <a href="/" title="firstblog ☁️  stoo.cloud">firstblog ☁️  stoo.cloud </a>
+            </div>
+            <div class="menu-toggle" id="menu-toggle-mobile">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+        <div class="menu" id="menu-mobile"><div class="search-wrapper">
+                    <div class="search mobile" id="search-mobile">
+                        <input type="text" placeholder="Search titles or contents..." id="search-input-mobile">
+                        <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-mobile" title="Search">
+                            <i class="fas fa-search fa-fw"></i>
+                        </a>
+                        <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-mobile" title="Clear">
+                            <i class="fas fa-times-circle fa-fw"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-mobile">
+                            <i class="fas fa-spinner fa-fw fa-spin"></i>
+                        </span>
+                    </div>
+                    <a href="javascript:void(0);" class="search-cancel" id="search-cancel-mobile">
+                        Cancel
+                    </a>
+                </div><a class="menu-item" href="/posts/" title="">Posts</a><a class="menu-item" href="/tags/" title="">Tags</a><a class="menu-item" href="/categories/" title="">Categories</a><a class="menu-item" href="/about" title="">About</a><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                <i class="fas fa-adjust fa-fw"></i>
+            </a></div>
+    </div>
+</header>
+<div class="search-dropdown desktop">
+    <div id="search-dropdown-desktop"></div>
+</div>
+<div class="search-dropdown mobile">
+    <div id="search-dropdown-mobile"></div>
+</div>
+<main class="main">
+                <div class="container"><div class="toc" id="toc-auto">
+            <h2 class="toc-title">Contents</h2>
+            <div class="toc-content always-active" id="toc-content-auto"></div>
+        </div><article class="page single"><h1 class="single-title animated flipInX">Ssh to Internet From Macos</h1><div class="post-meta">
+            <div class="post-meta-line"><span class="post-author"><a href="https://firstblog.stoo.cloud/about" title="Author" target="_blank" rel="noopener noreffer author" class="author"><i class="fas fa-user-circle fa-fw"></i>Stoo</a></span></div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2022-01-03">2022-01-03</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;1010 words&nbsp;
+                <i class="far fa-clock fa-fw"></i>&nbsp;5 minutes&nbsp;</div>
+        </div><div class="details toc" id="toc-static"  kept="">
+                <div class="details-summary toc-title">
+                    <span>Contents</span>
+                    <span><i class="details-icon fas fa-angle-right"></i></span>
+                </div>
+                <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#unable-to-ssh-to-the-internet">Unable to SSH to the Internet</a></li>
+    <li><a href="#network-test">Network test</a></li>
+    <li><a href="#proxycommand-in-the-ssh-config-file">ProxyCommand in the ssh config file</a></li>
+    <li><a href="#working-connection">Working connection</a></li>
+  </ul>
+</nav></div>
+            </div><div class="content" id="content"><h2 id="unable-to-ssh-to-the-internet">Unable to SSH to the Internet</h2>
+<p>Every now and again I run into the problem of not being able to SSH out to a host on the Internet from MacOS.  It has happened in 10.15 Catalina and 11.x Big Sur and now in 12.x Monterey versons of MacOS.  It might be my gateway router doing something tricky, or the SSH software installed on the Mac by default, and in the case of the destination tried below, it could be GCP firewall.</p>
+<p>Note: I can SSH to hosts on the local LAN just fine.</p>
+<h2 id="network-test">Network test</h2>
+<p>To check TCP connectivity to the <code>External_HOST_IP</code> on port <code>22</code>, I use the <code>nc</code> (ncat ot netcat) command that is installed into MacOS.  It is kind of like telnet but so much more powerful. If you want a more standard <code>nc</code> version when you can use <code>homebrew</code> to install it.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-Shell" data-lang="Shell">username@M1pro .ssh % nc  External_HOST_IP <span class="m">22</span>                                                                      
+SSH-2.0-OpenSSH_7.4
+^C
+</code></pre></div><p>If we can&rsquo;t get a connection and a banner like this, then there are other firewall or route related issues that needs to be troubleshooted.</p>
+<p>In this case I have the <code>~/.ssh/id_rsa</code> keyfile and <code>~/.ssh/id_rsa.pub</code> public key previously set up using <code>ssh-keygen</code> program.</p>
+<p>Turning on <code>-v</code> for verbose gives alot of nice output, to help determine where an previously issue occurs or what worked.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-Shell" data-lang="Shell">username@M1pro .ssh % ssh -i ~/.ssh/id_rsa -l username  External_HOST_IP   -v
+OpenSSH_8.6p1, LibreSSL 2.8.3
+debug1: Reading configuration data /Users/username/.ssh/config
+debug1: /Users/username/.ssh/config line 2: Applying options <span class="k">for</span> *
+debug1: Reading configuration data /etc/ssh/ssh_config
+debug1: /etc/ssh/ssh_config line 21: include /etc/ssh/ssh_config.d/* matched no files
+debug1: /etc/ssh/ssh_config line 54: Applying options <span class="k">for</span> *
+debug1: Authenticator provider <span class="nv">$SSH_SK_PROVIDER</span> did not resolve<span class="p">;</span> disabling
+debug1: Connecting to  External_HOST_IP   <span class="o">[</span> External_HOST_IP  <span class="o">]</span> port 22.
+debug1: Connection established.
+debug1: identity file id_rsa <span class="nb">type</span> <span class="m">0</span>
+debug1: identity file id_rsa-cert <span class="nb">type</span> -1
+debug1: Local version string SSH-2.0-OpenSSH_8.6
+debug1: Remote protocol version 2.0, remote software version OpenSSH_7.4
+debug1: compat_banner: match: OpenSSH_7.4 pat OpenSSH_7.0*,OpenSSH_7.1*,OpenSSH_7.2*,OpenSSH_7.3*,OpenSSH_7.4*,OpenSSH_7.5*,OpenSSH_7.6*,OpenSSH_7.7* compat 0x04000002
+debug1: Authenticating to  External_HOST_IP  :22 as <span class="s1">&#39;username&#39;</span>
+debug1: load_hostkeys: fopen /Users/username/.ssh/known_hosts2: No such file or directory
+debug1: load_hostkeys: fopen /etc/ssh/ssh_known_hosts: No such file or directory
+debug1: load_hostkeys: fopen /etc/ssh/ssh_known_hosts2: No such file or directory
+debug1: SSH2_MSG_KEXINIT sent
+ssh_dispatch_run_fatal: Connection to  External_HOST_IP   port 22: Operation timed out
+</code></pre></div><h2 id="proxycommand-in-the-ssh-config-file">ProxyCommand in the ssh config file</h2>
+<p>What I have come to realise and forget each time I go about setting up the new environment or machine, is that for some reason I need to push the SSH connection through a proxy tunnel that is handled by <code>nc</code>.</p>
+<p>After setting up the users <code>~/.ssh/config</code> file with the below settings and the important <code>ProxyCommand</code> is all that is needed to get me working again.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-Shell" data-lang="Shell">username@M1pro .ssh % cat ~/.ssh/config
+
+Host *
+  <span class="nv">ServerAliveInterval</span><span class="o">=</span><span class="m">120</span>
+  TCPKeepAlive yes
+  ProxyCommand nc %h %p
+
+</code></pre></div><h2 id="working-connection">Working connection</h2>
+<p>Trying the same ssh command again..</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-Shell" data-lang="Shell">username@M1pro .ssh % ssh -i id_rsa -l username  External_HOST_IP   -v 
+OpenSSH_8.6p1, LibreSSL 2.8.3
+debug1: Reading configuration data /Users/username/.ssh/config
+debug1: /Users/username/.ssh/config line 2: Applying options <span class="k">for</span> *
+debug1: Reading configuration data /etc/ssh/ssh_config
+debug1: /etc/ssh/ssh_config line 21: include /etc/ssh/ssh_config.d/* matched no files
+debug1: /etc/ssh/ssh_config line 54: Applying options <span class="k">for</span> *
+debug1: Authenticator provider <span class="nv">$SSH_SK_PROVIDER</span> did not resolve<span class="p">;</span> disabling
+debug1: Executing proxy command: <span class="nb">exec</span> nc  External_HOST_IP   <span class="m">22</span>
+debug1: identity file id_rsa <span class="nb">type</span> <span class="m">0</span>
+debug1: identity file id_rsa-cert <span class="nb">type</span> -1
+debug1: Local version string SSH-2.0-OpenSSH_8.6
+debug1: Remote protocol version 2.0, remote software version OpenSSH_7.4
+debug1: compat_banner: match: OpenSSH_7.4 pat OpenSSH_7.0*,OpenSSH_7.1*,OpenSSH_7.2*,OpenSSH_7.3*,OpenSSH_7.4*,OpenSSH_7.5*,OpenSSH_7.6*,OpenSSH_7.7* compat 0x04000002
+debug1: Authenticating to  External_HOST_IP  :22 as <span class="s1">&#39;username&#39;</span>
+debug1: load_hostkeys: fopen /Users/username/.ssh/known_hosts2: No such file or directory
+debug1: load_hostkeys: fopen /etc/ssh/ssh_known_hosts: No such file or directory
+debug1: load_hostkeys: fopen /etc/ssh/ssh_known_hosts2: No such file or directory
+debug1: SSH2_MSG_KEXINIT sent
+debug1: SSH2_MSG_KEXINIT received
+debug1: kex: algorithm: curve25519-sha256
+debug1: kex: host key algorithm: ssh-ed25519
+debug1: kex: server-&gt;client cipher: chacha20-poly1305@openssh.com MAC: &lt;implicit&gt; compression: none
+debug1: kex: client-&gt;server cipher: chacha20-poly1305@openssh.com MAC: &lt;implicit&gt; compression: none
+debug1: expecting SSH2_MSG_KEX_ECDH_REPLY
+debug1: SSH2_MSG_KEX_ECDH_REPLY received
+debug1: Server host key: ssh-ed25519 SHA256:Pt+/4PLN4e87/CKUr6u3rfgxnFJ3c9J7I9QFn5jm+9E
+debug1: load_hostkeys: fopen /Users/username/.ssh/known_hosts2: No such file or directory
+debug1: load_hostkeys: fopen /etc/ssh/ssh_known_hosts: No such file or directory
+debug1: load_hostkeys: fopen /etc/ssh/ssh_known_hosts2: No such file or directory
+debug1: hostkeys_find_by_key_hostfile: hostkeys file /Users/username/.ssh/known_hosts2 does not exist
+debug1: hostkeys_find_by_key_hostfile: hostkeys file /etc/ssh/ssh_known_hosts does not exist
+debug1: hostkeys_find_by_key_hostfile: hostkeys file /etc/ssh/ssh_known_hosts2 does not exist
+The authenticity of host <span class="s1">&#39; External_HOST_IP   (&lt;no hostip for proxy command&gt;)&#39;</span> can<span class="s1">&#39;t be established.
+</span><span class="s1">ED25519 key fingerprint is SHA256:Pt+/4PLN4e87/CKUr6u3rfgxnFJ3c9J7I9QFn5jm+9E.
+</span><span class="s1">This key is not known by any other names
+</span><span class="s1">Are you sure you want to continue connecting (yes/no/[fingerprint])? yes
+</span><span class="s1">Warning: Permanently added &#39;</span> External_HOST_IP  <span class="s1">&#39; (ED25519) to the list of known hosts.
+</span><span class="s1">debug1: rekey out after 134217728 blocks
+</span><span class="s1">debug1: SSH2_MSG_NEWKEYS sent
+</span><span class="s1">debug1: expecting SSH2_MSG_NEWKEYS
+</span><span class="s1">debug1: SSH2_MSG_NEWKEYS received
+</span><span class="s1">debug1: rekey in after 134217728 blocks
+</span><span class="s1">debug1: Will attempt key: id_rsa RSA SHA256:v8CIX2xe6JRaIpsJwrnW1StBu3Ab0F4Fzyf2mPZhAjw explicit
+</span><span class="s1">debug1: SSH2_MSG_EXT_INFO received
+</span><span class="s1">debug1: kex_input_ext_info: server-sig-algs=&lt;rsa-sha2-256,rsa-sha2-512&gt;
+</span><span class="s1">debug1: SSH2_MSG_SERVICE_ACCEPT received
+</span><span class="s1">debug1: Authentications that can continue: publickey,gssapi-keyex,gssapi-with-mic
+</span><span class="s1">debug1: Next authentication method: publickey
+</span><span class="s1">debug1: Offering public key: id_rsa RSA SHA256:v8CIX2xe6JRaIpsJwrnW1StBu3Ab0F4Fzyf2mPZhAjw explicit
+</span><span class="s1">debug1: Server accepts key: id_rsa RSA SHA256:v8CIX2xe6JRaIpsJwrnW1StBu3Ab0F4Fzyf2mPZhAjw explicit
+</span><span class="s1">Enter passphrase for key &#39;</span>id_rsa<span class="err">&#39;</span>: 
+debug1: Authentication succeeded <span class="o">(</span>publickey<span class="o">)</span>.
+Authenticated to  External_HOST_IP   <span class="o">(</span>via proxy<span class="o">)</span>.
+debug1: channel 0: new <span class="o">[</span>client-session<span class="o">]</span>
+debug1: Requesting no-more-sessions@openssh.com
+debug1: Entering interactive session.
+debug1: pledge: filesystem full
+debug1: client_input_global_request: rtype hostkeys-00@openssh.com want_reply <span class="m">0</span>
+debug1: client_input_hostkeys: searching /Users/username/.ssh/known_hosts <span class="k">for</span>  External_HOST_IP   / <span class="o">(</span>none<span class="o">)</span>
+debug1: client_input_hostkeys: searching /Users/username/.ssh/known_hosts2 <span class="k">for</span>  External_HOST_IP   / <span class="o">(</span>none<span class="o">)</span>
+debug1: client_input_hostkeys: hostkeys file /Users/username/.ssh/known_hosts2 does not exist
+debug1: Sending environment.
+debug1: channel 0: setting env <span class="nv">LANG</span> <span class="o">=</span> <span class="s2">&#34;en_AU.UTF-8&#34;</span>
+Learned new hostkey: RSA SHA256:+fsdo8GO+muA16NhRc71dBr7zOdkfRW9snYpdUASNeg
+Learned new hostkey: ECDSA SHA256:h1wv9vTry84C1WZSkgNwuT2l22bWQcRoxHkq67OphJ0
+Adding new key <span class="k">for</span>  External_HOST_IP   to /Users/username/.ssh/known_hosts: ssh-rsa SHA256:+fsdo8GO+muA16NhRc71dBr7zOdkfRW9snYpdUASNeg
+Adding new key <span class="k">for</span>  External_HOST_IP   to /Users/username/.ssh/known_hosts: ecdsa-sha2-nistp256 SHA256:h1wv9vTry84C1WZSkgNwuT2l22bWQcRoxHkq67OphJ0
+debug1: update_known_hosts: known hosts file /Users/username/.ssh/known_hosts2 does not exist
+
+
+Last login: Mon Jan  <span class="m">3</span> 04:12:06 <span class="m">2022</span> from x.y.w.z
+<span class="o">[</span>username@test ~<span class="o">]</span>$ uptime
+ 04:13:02 up  1:34,  <span class="m">2</span> users,  load average: 0.00, 0.01, 0.04
+<span class="o">[</span>username@test ~<span class="o">]</span>$ exitdebug1: client_input_channel_req: channel <span class="m">0</span> rtype exit-status reply <span class="m">0</span>
+debug1: client_input_channel_req: channel <span class="m">0</span> rtype eow@openssh.com reply <span class="m">0</span>
+
+<span class="nb">logout</span>
+debug1: channel 0: free: client-session, nchannels <span class="m">1</span>
+Connection to  External_HOST_IP   closed.
+Transferred: sent 4316, received <span class="m">3896</span> bytes, in 11.3 seconds
+Bytes per second: sent 383.3, received 346.0
+debug1: Exit status <span class="m">0</span>
+username@M1pro .ssh % 
+</code></pre></div><p>I could always SSH to local machines on my network just fine, and this proxy does not affect them after the change either.</p>
+</div><div class="post-footer" id="post-footer">
+    <div class="post-info">
+        <div class="post-info-line">
+            <div class="post-info-mod">
+                <span>Updated on 2022-01-03</span>
+            </div>
+            <div class="post-info-license"></div>
+        </div>
+        <div class="post-info-line">
+            <div class="post-info-md"><span>
+                            <a class="link-to-markdown" href="/ssh-to-internet-from-macos/index.md" target="_blank">Read Markdown</a>
+                        </span></div>
+            <div class="post-info-share">
+                <span><a href="javascript:void(0);" title="Share on Twitter" data-sharer="twitter" data-url="https://stoo-cloud.github.io/ssh-to-internet-from-macos/" data-title="Ssh to Internet From Macos" data-hashtags="ssh,nc,macos"><i class="fab fa-twitter fa-fw"></i></a><a href="javascript:void(0);" title="Share on Facebook" data-sharer="facebook" data-url="https://stoo-cloud.github.io/ssh-to-internet-from-macos/" data-hashtag="ssh"><i class="fab fa-facebook-square fa-fw"></i></a><a href="javascript:void(0);" title="Share on WhatsApp" data-sharer="whatsapp" data-url="https://stoo-cloud.github.io/ssh-to-internet-from-macos/" data-title="Ssh to Internet From Macos" data-web><i class="fab fa-whatsapp fa-fw"></i></a><a href="javascript:void(0);" title="Share on Line" data-sharer="line" data-url="https://stoo-cloud.github.io/ssh-to-internet-from-macos/" data-title="Ssh to Internet From Macos"><i data-svg-src="/lib/simple-icons/icons/line.min.svg"></i></a><a href="javascript:void(0);" title="Share on 微博" data-sharer="weibo" data-url="https://stoo-cloud.github.io/ssh-to-internet-from-macos/" data-title="Ssh to Internet From Macos"><i class="fab fa-weibo fa-fw"></i></a><a href="javascript:void(0);" title="Share on Myspace" data-sharer="myspace" data-url="https://stoo-cloud.github.io/ssh-to-internet-from-macos/" data-title="Ssh to Internet From Macos" data-description=""><i data-svg-src="/lib/simple-icons/icons/myspace.min.svg"></i></a><a href="javascript:void(0);" title="Share on Blogger" data-sharer="blogger" data-url="https://stoo-cloud.github.io/ssh-to-internet-from-macos/" data-title="Ssh to Internet From Macos" data-description=""><i class="fab fa-blogger fa-fw"></i></a><a href="javascript:void(0);" title="Share on Evernote" data-sharer="evernote" data-url="https://stoo-cloud.github.io/ssh-to-internet-from-macos/" data-title="Ssh to Internet From Macos"><i class="fab fa-evernote fa-fw"></i></a></span>
+            </div>
+        </div>
+    </div>
+
+    <div class="post-info-more">
+        <section class="post-tags"><i class="fas fa-tags fa-fw"></i>&nbsp;<a href="/tags/ssh/">ssh</a>,&nbsp;<a href="/tags/nc/">nc</a>,&nbsp;<a href="/tags/macos/">macos</a></section>
+        <section>
+            <span><a href="javascript:void(0);" onclick="window.history.back();">Back</a></span>&nbsp;|&nbsp;<span><a href="/">Home</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav"><a href="/python-on-m1-native-macbook-pro/" class="prev" rel="prev" title="Python on M1 native Macbook Pro 2021"><i class="fas fa-angle-left fa-fw"></i>Python on M1 native Macbook Pro 2021</a></div>
+</div>
+<div id="comments"></div></article></div>
+            </main><footer class="footer">
+        <div class="footer-container"><div class="footer-line">Powered by <a href="https://gohugo.io/" target="_blank" rel="noopener noreffer" title="Hugo 0.90.1">Hugo</a> | Theme - <a href="https://github.com/dillonzq/LoveIt" target="_blank" rel="noopener noreffer" title="LoveIt 0.2.10"><i class="far fa-kiss-wink-heart fa-fw"></i> LoveIt</a>
+                </div><div class="footer-line"><i class="far fa-copyright fa-fw"></i><span itemprop="copyrightYear">2019 - 2022</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="https://firstblog.stoo.cloud/about" target="_blank">Stoo</a></span>&nbsp;|&nbsp;<span class="license"><a rel="license external nofollow noopener noreffer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a></span></div>
+        </div>
+    </footer></div>
+
+        <div id="fixed-buttons"><a href="#" id="back-to-top" class="fixed-button" title="Back to Top">
+                <i class="fas fa-arrow-up fa-fw"></i>
+            </a><a href="#" id="view-comments" class="fixed-button" title="View Comments">
+                <i class="fas fa-comment fa-fw"></i>
+            </a>
+        </div><link rel="stylesheet" href="/lib/katex/katex.min.css"><link rel="stylesheet" href="/lib/katex/copy-tex.min.css"><link rel="stylesheet" href="/lib/cookieconsent/cookieconsent.min.css"><script type="text/javascript" src="/lib/smooth-scroll/smooth-scroll.min.js"></script><script type="text/javascript" src="/lib/autocomplete/autocomplete.min.js"></script><script type="text/javascript" src="/lib/lunr/lunr.min.js"></script><script type="text/javascript" src="/lib/lazysizes/lazysizes.min.js"></script><script type="text/javascript" src="/lib/clipboard/clipboard.min.js"></script><script type="text/javascript" src="/lib/sharer/sharer.min.js"></script><script type="text/javascript" src="/lib/katex/katex.min.js"></script><script type="text/javascript" src="/lib/katex/auto-render.min.js"></script><script type="text/javascript" src="/lib/katex/copy-tex.min.js"></script><script type="text/javascript" src="/lib/katex/mhchem.min.js"></script><script type="text/javascript" src="/lib/cookieconsent/cookieconsent.min.js"></script><script type="text/javascript">window.config={"code":{"copyTitle":"Copy to clipboard","maxShownLines":10},"comment":{},"cookieconsent":{"content":{"dismiss":"Got it!","link":"Learn more","message":"This website uses Cookies to improve your experience."},"enable":true,"palette":{"button":{"background":"#f0f0f0"},"popup":{"background":"#1aa3ff"}},"theme":"edgeless"},"math":{"delimiters":[{"display":true,"left":"$$","right":"$$"},{"display":true,"left":"\\[","right":"\\]"},{"display":false,"left":"$","right":"$"},{"display":false,"left":"\\(","right":"\\)"}],"strict":false},"search":{"highlightTag":"em","lunrIndexURL":"/index.json","maxResultLength":10,"noResultsFound":"No results found","snippetLength":30,"type":"lunr"}};</script><script type="text/javascript" src="/js/theme.min.js"></script><script type="text/javascript">
+            window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js', new Date());
+            gtag('config', 'G-7MQ2PDHFQJ');
+        </script><script type="text/javascript" src="https://www.googletagmanager.com/gtag/js?id=G-7MQ2PDHFQJ" async></script></body>
+</html>

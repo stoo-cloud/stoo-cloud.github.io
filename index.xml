@@ -4,9 +4,16 @@
         <link>https://stoo-cloud.github.io/</link>
         <description>A site with my musings of working in the Cloud</description>
         <generator>Hugo -- gohugo.io</generator><language>en-us</language><managingEditor>firstblog@stoo.cloud (Stoo)</managingEditor>
-            <webMaster>firstblog@stoo.cloud (Stoo)</webMaster><lastBuildDate>Tue, 14 Dec 2021 15:56:18 &#43;1100</lastBuildDate>
+            <webMaster>firstblog@stoo.cloud (Stoo)</webMaster><lastBuildDate>Mon, 03 Jan 2022 15:29:23 &#43;1100</lastBuildDate>
             <atom:link href="https://stoo-cloud.github.io/index.xml" rel="self" type="application/rss+xml" />
         <item>
+    <title>Ssh to Internet From Macos</title>
+    <link>https://stoo-cloud.github.io/ssh-to-internet-from-macos/</link>
+    <pubDate>Mon, 03 Jan 2022 15:29:23 &#43;1100</pubDate>
+    <author>Author</author>
+    <guid>https://stoo-cloud.github.io/ssh-to-internet-from-macos/</guid>
+    <description><![CDATA[Unable to SSH to the Internet Every now and again I run into the problem of not being able to SSH out to a host on the Internet from MacOS. It has happened in 10.15 Catalina and 11.x Big Sur and now in 12.x Monterey versons of MacOS. It might be my gateway router doing something tricky, or the SSH software installed on the Mac by default, and in the case of the destination tried below, it could be GCP firewall.]]></description>
+</item><item>
     <title>Python on M1 native Macbook Pro 2021</title>
     <link>https://stoo-cloud.github.io/python-on-m1-native-macbook-pro/</link>
     <pubDate>Tue, 14 Dec 2021 15:56:18 &#43;1100</pubDate>
