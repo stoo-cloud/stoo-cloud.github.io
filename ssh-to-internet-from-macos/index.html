@@ -6,7 +6,7 @@
         <meta name="robots" content="noodp" />
         <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1">
         <title>Ssh to Internet From Macos - firstblog ☁️  stoo.cloud</title><meta name="Description" content="A site with my musings of working in the Cloud"><meta property="og:title" content="Ssh to Internet From Macos" />
-<meta property="og:description" content="Unable to SSH to the Internet Every now and again I run into the problem of not being able to SSH out to a host on the Internet from MacOS. It has happened in 10.15 Catalina and 11.x Big Sur and now in 12.x Monterey versons of MacOS. It might be my gateway router doing something tricky, or the SSH software installed on the Mac by default, and in the case of the destination tried below, it could be GCP firewall." />
+<meta property="og:description" content="Unable to SSH to the Internet The first time I try and finally look into it, I have the problem of not being able to SSH out to a host on the Internet from MacOS. It has happened in 11.15 Catalina and 11.x Big Sur and now in 12.x Monterey versons of MacOS. It might be my gateway router doing something tricky, or the SSH software installed on the Mac by default, and in the case of the destination tried below it could have been the GCP firewall rules on my VPC network (and sometimes is) with missing default rules perhaps." />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://stoo-cloud.github.io/ssh-to-internet-from-macos/" /><meta property="og:image" content="https://stoo-cloud.github.io/logo.png"/><meta property="article:section" content="posts" />
 <meta property="article:published_time" content="2022-01-03T15:29:23+11:00" />
@@ -16,7 +16,7 @@
 <meta name="twitter:image" content="https://stoo-cloud.github.io/logo.png"/>
 
 <meta name="twitter:title" content="Ssh to Internet From Macos"/>
-<meta name="twitter:description" content="Unable to SSH to the Internet Every now and again I run into the problem of not being able to SSH out to a host on the Internet from MacOS. It has happened in 10.15 Catalina and 11.x Big Sur and now in 12.x Monterey versons of MacOS. It might be my gateway router doing something tricky, or the SSH software installed on the Mac by default, and in the case of the destination tried below, it could be GCP firewall."/>
+<meta name="twitter:description" content="Unable to SSH to the Internet The first time I try and finally look into it, I have the problem of not being able to SSH out to a host on the Internet from MacOS. It has happened in 11.15 Catalina and 11.x Big Sur and now in 12.x Monterey versons of MacOS. It might be my gateway router doing something tricky, or the SSH software installed on the Mac by default, and in the case of the destination tried below it could have been the GCP firewall rules on my VPC network (and sometimes is) with missing default rules perhaps."/>
 <meta name="application-name" content="stoo.cloud">
 <meta name="apple-mobile-web-app-title" content="stoo.cloud"><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
         <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
@@ -29,7 +29,7 @@
         "mainEntityOfPage": {
             "@type": "WebPage",
             "@id": "https:\/\/stoo-cloud.github.io\/ssh-to-internet-from-macos\/"
-        },"genre": "posts","keywords": "ssh, nc, macos","wordcount":  1010 ,
+        },"genre": "posts","keywords": "ssh, nc, macos","wordcount":  1032 ,
         "url": "https:\/\/stoo-cloud.github.io\/ssh-to-internet-from-macos\/","datePublished": "2022-01-03T15:29:23+11:00","dateModified": "2022-01-03T15:29:23+11:00","publisher": {
             "@type": "Organization",
             "name": ""},"author": {
@@ -46,7 +46,7 @@
             <a href="/" title="firstblog ☁️  stoo.cloud">firstblog ☁️  stoo.cloud </a>
         </div>
         <div class="menu">
-            <div class="menu-inner"><a class="menu-item" href="/posts/"> Posts </a><a class="menu-item" href="/tags/"> Tags </a><a class="menu-item" href="/categories/"> Categories </a><a class="menu-item" href="/about"> About </a><span class="menu-item delimiter"></span><span class="menu-item search" id="search-desktop">
+            <div class="menu-inner"><a class="menu-item" href="/posts/"> Posts </a><a class="menu-item" href="/tags/"> Tags </a><a class="menu-item" href="/about"> About </a><span class="menu-item delimiter"></span><span class="menu-item search" id="search-desktop">
                         <input type="text" placeholder="Search titles or contents..." id="search-input-desktop">
                         <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-desktop" title="Search">
                             <i class="fas fa-search fa-fw"></i>
@@ -89,7 +89,7 @@
                     <a href="javascript:void(0);" class="search-cancel" id="search-cancel-mobile">
                         Cancel
                     </a>
-                </div><a class="menu-item" href="/posts/" title="">Posts</a><a class="menu-item" href="/tags/" title="">Tags</a><a class="menu-item" href="/categories/" title="">Categories</a><a class="menu-item" href="/about" title="">About</a><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                </div><a class="menu-item" href="/posts/" title="">Posts</a><a class="menu-item" href="/tags/" title="">Tags</a><a class="menu-item" href="/about" title="">About</a><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
                 <i class="fas fa-adjust fa-fw"></i>
             </a></div>
     </div>
@@ -106,7 +106,7 @@
             <div class="toc-content always-active" id="toc-content-auto"></div>
         </div><article class="page single"><h1 class="single-title animated flipInX">Ssh to Internet From Macos</h1><div class="post-meta">
             <div class="post-meta-line"><span class="post-author"><a href="https://firstblog.stoo.cloud/about" title="Author" target="_blank" rel="noopener noreffer author" class="author"><i class="fas fa-user-circle fa-fw"></i>Stoo</a></span></div>
-            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2022-01-03">2022-01-03</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;1010 words&nbsp;
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2022-01-03">2022-01-03</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;1032 words&nbsp;
                 <i class="far fa-clock fa-fw"></i>&nbsp;5 minutes&nbsp;</div>
         </div><div class="details toc" id="toc-static"  kept="">
                 <div class="details-summary toc-title">
@@ -122,10 +122,10 @@
   </ul>
 </nav></div>
             </div><div class="content" id="content"><h2 id="unable-to-ssh-to-the-internet">Unable to SSH to the Internet</h2>
-<p>Every now and again I run into the problem of not being able to SSH out to a host on the Internet from MacOS.  It has happened in 10.15 Catalina and 11.x Big Sur and now in 12.x Monterey versons of MacOS.  It might be my gateway router doing something tricky, or the SSH software installed on the Mac by default, and in the case of the destination tried below, it could be GCP firewall.</p>
+<p>The first time I try and finally look into it, I have the problem of not being able to SSH out to a host on the Internet from MacOS.  It has happened in 11.15 Catalina and 11.x Big Sur and now in 12.x Monterey versons of MacOS.  It might be my gateway router doing something tricky, or the SSH software installed on the Mac by default, and in the case of the destination tried below it could have been the GCP firewall rules on my VPC network (and sometimes is) with missing default rules perhaps.</p>
 <p>Note: I can SSH to hosts on the local LAN just fine.</p>
 <h2 id="network-test">Network test</h2>
-<p>To check TCP connectivity to the <code>External_HOST_IP</code> on port <code>22</code>, I use the <code>nc</code> (ncat ot netcat) command that is installed into MacOS.  It is kind of like telnet but so much more powerful. If you want a more standard <code>nc</code> version when you can use <code>homebrew</code> to install it.</p>
+<p>To check TCP connectivity to the <code>External_HOST_IP</code> on port <code>22</code>, I use the <code>nc</code> (ncat ot netcat) command that is installed into MacOS.  It is kind of like telnet but so much more powerful. If you want a more up to date <code>nc</code> version then you can use <code>homebrew</code> to install it.</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-Shell" data-lang="Shell">username@M1pro .ssh % nc  External_HOST_IP <span class="m">22</span>                                                                      
 SSH-2.0-OpenSSH_7.4
 ^C
@@ -277,7 +277,9 @@ username@M1pro .ssh %
 
     <div class="post-nav"><a href="/python-on-m1-native-macbook-pro/" class="prev" rel="prev" title="Python on M1 native Macbook Pro 2021"><i class="fas fa-angle-left fa-fw"></i>Python on M1 native Macbook Pro 2021</a></div>
 </div>
-<div id="comments"></div></article></div>
+<div id="comments"><div id="disqus_thread" class="comment"></div><noscript>
+                Please enable JavaScript to view the comments powered by <a href="https://disqus.com/?ref_noscript">Disqus</a>.
+            </noscript></div></article></div>
             </main><footer class="footer">
         <div class="footer-container"><div class="footer-line">Powered by <a href="https://gohugo.io/" target="_blank" rel="noopener noreffer" title="Hugo 0.90.1">Hugo</a> | Theme - <a href="https://github.com/dillonzq/LoveIt" target="_blank" rel="noopener noreffer" title="LoveIt 0.2.10"><i class="far fa-kiss-wink-heart fa-fw"></i> LoveIt</a>
                 </div><div class="footer-line"><i class="far fa-copyright fa-fw"></i><span itemprop="copyrightYear">2019 - 2022</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="https://firstblog.stoo.cloud/about" target="_blank">Stoo</a></span>&nbsp;|&nbsp;<span class="license"><a rel="license external nofollow noopener noreffer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a></span></div>
@@ -289,7 +291,7 @@ username@M1pro .ssh %
             </a><a href="#" id="view-comments" class="fixed-button" title="View Comments">
                 <i class="fas fa-comment fa-fw"></i>
             </a>
-        </div><link rel="stylesheet" href="/lib/katex/katex.min.css"><link rel="stylesheet" href="/lib/katex/copy-tex.min.css"><link rel="stylesheet" href="/lib/cookieconsent/cookieconsent.min.css"><script type="text/javascript" src="/lib/smooth-scroll/smooth-scroll.min.js"></script><script type="text/javascript" src="/lib/autocomplete/autocomplete.min.js"></script><script type="text/javascript" src="/lib/lunr/lunr.min.js"></script><script type="text/javascript" src="/lib/lazysizes/lazysizes.min.js"></script><script type="text/javascript" src="/lib/clipboard/clipboard.min.js"></script><script type="text/javascript" src="/lib/sharer/sharer.min.js"></script><script type="text/javascript" src="/lib/katex/katex.min.js"></script><script type="text/javascript" src="/lib/katex/auto-render.min.js"></script><script type="text/javascript" src="/lib/katex/copy-tex.min.js"></script><script type="text/javascript" src="/lib/katex/mhchem.min.js"></script><script type="text/javascript" src="/lib/cookieconsent/cookieconsent.min.js"></script><script type="text/javascript">window.config={"code":{"copyTitle":"Copy to clipboard","maxShownLines":10},"comment":{},"cookieconsent":{"content":{"dismiss":"Got it!","link":"Learn more","message":"This website uses Cookies to improve your experience."},"enable":true,"palette":{"button":{"background":"#f0f0f0"},"popup":{"background":"#1aa3ff"}},"theme":"edgeless"},"math":{"delimiters":[{"display":true,"left":"$$","right":"$$"},{"display":true,"left":"\\[","right":"\\]"},{"display":false,"left":"$","right":"$"},{"display":false,"left":"\\(","right":"\\)"}],"strict":false},"search":{"highlightTag":"em","lunrIndexURL":"/index.json","maxResultLength":10,"noResultsFound":"No results found","snippetLength":30,"type":"lunr"}};</script><script type="text/javascript" src="/js/theme.min.js"></script><script type="text/javascript">
+        </div><link rel="stylesheet" href="/lib/katex/katex.min.css"><link rel="stylesheet" href="/lib/katex/copy-tex.min.css"><link rel="stylesheet" href="/lib/cookieconsent/cookieconsent.min.css"><script type="text/javascript" src="https://firstblogstoocloud.disqus.com/embed.js" defer></script><script type="text/javascript" src="/lib/smooth-scroll/smooth-scroll.min.js"></script><script type="text/javascript" src="/lib/autocomplete/autocomplete.min.js"></script><script type="text/javascript" src="/lib/lunr/lunr.min.js"></script><script type="text/javascript" src="/lib/lazysizes/lazysizes.min.js"></script><script type="text/javascript" src="/lib/clipboard/clipboard.min.js"></script><script type="text/javascript" src="/lib/sharer/sharer.min.js"></script><script type="text/javascript" src="/lib/katex/katex.min.js"></script><script type="text/javascript" src="/lib/katex/auto-render.min.js"></script><script type="text/javascript" src="/lib/katex/copy-tex.min.js"></script><script type="text/javascript" src="/lib/katex/mhchem.min.js"></script><script type="text/javascript" src="/lib/cookieconsent/cookieconsent.min.js"></script><script type="text/javascript">window.config={"code":{"copyTitle":"Copy to clipboard","maxShownLines":10},"comment":{},"cookieconsent":{"content":{"dismiss":"Got it!","link":"Learn more","message":"This website uses Cookies to improve your experience."},"enable":true,"palette":{"button":{"background":"#f0f0f0"},"popup":{"background":"#1aa3ff"}},"theme":"edgeless"},"math":{"delimiters":[{"display":true,"left":"$$","right":"$$"},{"display":true,"left":"\\[","right":"\\]"},{"display":false,"left":"$","right":"$"},{"display":false,"left":"\\(","right":"\\)"}],"strict":false},"search":{"highlightTag":"em","lunrIndexURL":"/index.json","maxResultLength":10,"noResultsFound":"No results found","snippetLength":30,"type":"lunr"}};</script><script type="text/javascript" src="/js/theme.min.js"></script><script type="text/javascript">
             window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js', new Date());
             gtag('config', 'G-7MQ2PDHFQJ');
         </script><script type="text/javascript" src="https://www.googletagmanager.com/gtag/js?id=G-7MQ2PDHFQJ" async></script></body>

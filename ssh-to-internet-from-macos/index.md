@@ -3,13 +3,13 @@
 
 ## Unable to SSH to the Internet 
 
-Every now and again I run into the problem of not being able to SSH out to a host on the Internet from MacOS.  It has happened in 10.15 Catalina and 11.x Big Sur and now in 12.x Monterey versons of MacOS.  It might be my gateway router doing something tricky, or the SSH software installed on the Mac by default, and in the case of the destination tried below, it could be GCP firewall.
+The first time I try and finally look into it, I have the problem of not being able to SSH out to a host on the Internet from MacOS.  It has happened in 11.15 Catalina and 11.x Big Sur and now in 12.x Monterey versons of MacOS.  It might be my gateway router doing something tricky, or the SSH software installed on the Mac by default, and in the case of the destination tried below it could have been the GCP firewall rules on my VPC network (and sometimes is) with missing default rules perhaps.
 
 Note: I can SSH to hosts on the local LAN just fine.
 
 ## Network test
 
-To check TCP connectivity to the `External_HOST_IP` on port `22`, I use the `nc` (ncat ot netcat) command that is installed into MacOS.  It is kind of like telnet but so much more powerful. If you want a more standard `nc` version when you can use `homebrew` to install it.
+To check TCP connectivity to the `External_HOST_IP` on port `22`, I use the `nc` (ncat ot netcat) command that is installed into MacOS.  It is kind of like telnet but so much more powerful. If you want a more up to date `nc` version then you can use `homebrew` to install it.
 
 ```Shell
 username@M1pro .ssh % nc  External_HOST_IP 22                                                                      
