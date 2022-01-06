@@ -17,7 +17,7 @@ SSH-2.0-OpenSSH_7.4
 ^C
 ```
 
-If we can't get a connection and a banner like this, then there are other firewall or route related issues that needs to be troubleshooted.
+If we can't get a connection and a banner like this, then there are other firewall or route related issues that needs to be troubleshooted. 
 
 In this case I have the `~/.ssh/id_rsa` keyfile and `~/.ssh/id_rsa.pub` public key previously set up using `ssh-keygen` program.
 
